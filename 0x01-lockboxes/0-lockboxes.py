@@ -7,7 +7,8 @@ def canUnlockAll(boxes):
     Determines whether it is possible to unlock all boxes in a given list.
 
     Args:
-    - boxes (list of lists): A list where each index represents a box, and the value at that index is a list of keys.
+    - boxes (list of lists): A list where each index represents a box,
+      and the value at that index is a list of keys.
 
     Returns:
     - bool: True if all boxes can be unlocked, False otherwise.
