@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" Can unlocked All """
+""" Lock Boxes """
 
 
 def canUnlockAll(boxes):
