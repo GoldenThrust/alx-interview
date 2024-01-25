@@ -27,6 +27,7 @@ try:
             print("File size: {}".format(total_size))
             for code in sorted(status_codes_count.keys()):
                 print("{}: {}".format(code, status_codes_count[code]))
+    print("{}: {}".format(code, status_codes_count[code]))
 except KeyboardInterrupt:
     print("File size: {}".format(total_size))
     for code in sorted(status_codes_count.keys()):
