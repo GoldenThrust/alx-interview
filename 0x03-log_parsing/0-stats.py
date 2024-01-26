@@ -24,30 +24,27 @@ import sys
 
 
 try:
+    my_dict = {}
     total_size = 0
-    status_codes_count = {}
     for i, line in enumerate(sys.stdin, start=1):
+        parts = line.split(" ")
         try:
-            status_code, file_size = line.split()[-2:]
-            status_code = int(status_code)
-
-            total_size += int(file_size)
-
-            if status_code in status_codes_count:
-                status_codes_count[status_code] += 1
+            total_size += int(parts[-1])
+            status = int(parts[-2])
+            if status not in my_dict:
+                my_dict[status] = 1
             else:
-                status_codes_count[status_code] = 1
-
+                my_dict[status] += 1
         except (ValueError, IndexError):
             continue
-
+        my_dict = dict(sorted(my_dict.items()))
         if i % 10 == 0:
             print("File size: {}".format(total_size))
-            for code in sorted(status_codes_count.keys()):
-                print("{}: {}".format(code, status_codes_count[code]))
+            for key, val in my_dict.items():
+                print("{}: {}".format(key, val))
 except KeyboardInterrupt:
     pass
 finally:
     print("File size: {}".format(total_size))
-    for code in sorted(status_codes_count.keys()):
-        print("{}: {}".format(code, status_codes_count[code]))
+    for key, val in my_dict.items():
+        print("{}: {}".format(key, val))
