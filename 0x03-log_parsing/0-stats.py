@@ -25,7 +25,7 @@ import sys
 try:
     total_size = 0
     status_counts = {}
-    for i, line in enumerate(stdin, start=1):
+    for i, line in enumerate(sys.stdin, start=1):
         code = line.split(" ")
         try:
             total_size += int(code[-1])
