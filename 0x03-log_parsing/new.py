@@ -28,15 +28,6 @@ status_codes_count = {}
 lines = 0
 
 
-def print_log():
-    """
-    Prints the total file size and count of each HTTP status code.
-    """
-    print("File size: {}".format(total_size))
-    for code in sorted(status_codes_count.keys()):
-        print("{}: {}".format(code, status_codes_count[code]))
-
-
 def parse_log(log):
     """
     Parse a log entry and update global variables.
@@ -71,6 +62,15 @@ def parse_log(log):
         return True
     except (ValueError, IndexError):
         return False
+
+
+def print_log():
+    """
+    Prints the total file size and count of each HTTP status code.
+    """
+    print("File size: {}".format(total_size))
+    for code in sorted(status_codes_count.keys()):
+        print("{}: {}".format(code, status_codes_count[code]))
 
 
 if __name__ == '__main__':
