@@ -1,5 +1,25 @@
 #!/usr/bin/python3
-""" Log Parsing """
+"""
+Log Parsing Script
+
+This script parses log files containing entries with a specific format
+and extracts relevant information, such as total file size and counts of each
+HTTP status code.
+
+Usage:
+    ./log_parser.py < logfile.txt
+    - Reads log entries from standard input (stdin).
+
+Log Entry Format:
+    Each log entry is expected to follow the format:
+    <IP Address> - [<Timestamp>] "GET /projects/260 HTTP/1.1"
+    <HTTP Status Code> <File Size>
+
+Example Log Entry:
+    192.168.1.1 - [2024-01-26 12:34:56] "GET /projects/260 HTTP/1.1" 200 1024
+
+"""
+
 import re
 import sys
 
@@ -9,6 +29,15 @@ lines = 0
 
 
 def parse_log(log):
+    """
+    Parse a log entry and update global variables.
+
+    Args:
+        log (str): Log entry string.
+
+    Returns:
+        bool: True if parsing is successful, False otherwise.
+    """
     global total_size, lines
     try:
         pattern = r'^(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}) - ' \
@@ -33,12 +62,13 @@ def parse_log(log):
 
         return True
     except Exception as e:
-        print(e)
         return False
 
 
 def print_log():
-    """Prints the total file size and count of each HTTP status code."""
+    """
+    Prints the total file size and count of each HTTP status code.
+    """
     print("File size: {}".format(total_size))
     for code in sorted(status_codes_count.keys()):
         print("{}: {}".format(code, status_codes_count[code]))
