@@ -23,10 +23,13 @@ Example Log Entry:
 import sys
 
 try:
+    lines = 0
     total_size = 0
     status_counts = {}
-    for i, line in enumerate(sys.stdin, start=1):
+    for line in sys.stdin:
         code = line.split(" ")
+        lines += 1
+
         try:
             total_size += int(code[-1])
             status = int(code[-2])
@@ -36,7 +39,7 @@ try:
                 status_counts[status] = 1
         except (ValueError, IndexError):
             continue
-        if i % 10 == 0:
+        if lines % 10 == 0:
             status_counts = dict(sorted(status_counts.items()))
             print("File size: {}".format(total_size))
             for key, val in status_counts.items():
