@@ -24,10 +24,9 @@ import sys
 
 
 try:
-    lines = 0
     total_size = 0
     status_codes_count = {}
-    for line in sys.stdin:
+    for i, line in enumerate(sys.stdin, start=1):
         try:
             status_code, file_size = line.split()[-2:]
             status_code = int(status_code)
@@ -39,13 +38,10 @@ try:
             else:
                 status_codes_count[status_code] = 1
 
-            lines += 1
-
         except (ValueError, IndexError):
-            line += 1
             continue
 
-        if lines % 10 == 0:
+        if i % 10 == 0:
             print("File size: {}".format(total_size))
             for code in sorted(status_codes_count.keys()):
                 print("{}: {}".format(code, status_codes_count[code]))
