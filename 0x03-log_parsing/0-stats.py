@@ -22,12 +22,11 @@ Example Log Entry:
 
 import sys
 
-total_size = 0
-status_codes_count = {}
-lines = 0
-
 
 try:
+    lines = 0
+    total_size = 0
+    status_codes_count = {}
     for line in sys.stdin:
         try:
             status_code, file_size = line.split()[-2:]
@@ -43,6 +42,7 @@ try:
             lines += 1
 
         except (ValueError, IndexError):
+            line += 1
             continue
 
         if lines % 10 == 0:
