@@ -47,7 +47,7 @@ def parse_log(log):
         if not match:
             raise Exception
 
-        status_code, file_size = re.split(r'\ ', log)[-2:]
+        status_code, file_size = log.split()[-2:]
         file_size = int(file_size)
         status_code = int(status_code)
 
@@ -82,7 +82,6 @@ if __name__ == '__main__':
 
             if lines % 10 == 0:
                 print_log()
-
-        print_log()
+    
     except KeyboardInterrupt:
         print_log()
