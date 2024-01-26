@@ -27,32 +27,31 @@ status_codes_count = {}
 lines = 0
 
 
-if __name__ == '__main__':
-    try:
-        for line in sys.stdin:
-            try:
-                status_code, file_size = line.split()[-2:]
-                status_code = int(status_code)
+try:
+    for line in sys.stdin:
+        try:
+            status_code, file_size = line.split()[-2:]
+            status_code = int(status_code)
 
-                total_size += int(file_size)
+            total_size += int(file_size)
 
-                if status_code in status_codes_count:
-                    status_codes_count[status_code] += 1
-                else:
-                    status_codes_count[status_code] = 1
+            if status_code in status_codes_count:
+                status_codes_count[status_code] += 1
+            else:
+                status_codes_count[status_code] = 1
 
-                lines += 1
+            lines += 1
 
-            except (ValueError, IndexError):
-                continue
+        except (ValueError, IndexError):
+            continue
 
-            if lines % 10 == 0:
-                print("File size: {}".format(total_size))
-                for code in sorted(status_codes_count.keys()):
-                    print("{}: {}".format(code, status_codes_count[code]))
-    except KeyboardInterrupt:
-        pass
-    finally:
-        print("File size: {}".format(total_size))
-        for code in sorted(status_codes_count.keys()):
-            print("{}: {}".format(code, status_codes_count[code]))
+        if lines % 10 == 0:
+            print("File size: {}".format(total_size))
+            for code in sorted(status_codes_count.keys()):
+                print("{}: {}".format(code, status_codes_count[code]))
+except KeyboardInterrupt:
+    pass
+finally:
+    print("File size: {}".format(total_size))
+    for code in sorted(status_codes_count.keys()):
+        print("{}: {}".format(code, status_codes_count[code]))
