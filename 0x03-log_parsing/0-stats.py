@@ -44,6 +44,7 @@ try:
 except KeyboardInterrupt:
     pass
 finally:
+    status_counts = dict(sorted(status_counts.items()))
     print("File size: {}".format(total_size))
     for key, val in status_counts.items():
         print("{}: {}".format(key, val))
