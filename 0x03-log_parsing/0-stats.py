@@ -22,29 +22,28 @@ Example Log Entry:
 
 import sys
 
-
 try:
     total_size = 0
-    status_codes = {}
-    for i, line in enumerate(sys.stdin, start=1):
+    status_counts = {}
+    for i, line in enumerate(stdin, start=1):
         code = line.split(" ")
         try:
-            status_code = int(code[-2])
             total_size += int(code[-1])
-            if status_code in status_codes:
-                status_codes[status_code] += 1
+            status = int(code[-2])
+            if status in status_counts:
+                status_counts[status] += 1
             else:
-                status_codes[status_code] = 1
+                status_counts[status] = 1
         except (ValueError, IndexError):
             continue
-        status_codes = dict(sorted(status_codes.items()))
+        status_counts = dict(sorted(status_counts.items()))
         if i % 10 == 0:
             print("File size: {}".format(total_size))
-            for key, value in status_codes.items():
-                print("{}: {}".format(key, value))
+            for key, val in status_counts.items():
+                print("{}: {}".format(key, val))
 except KeyboardInterrupt:
     pass
 finally:
     print("File size: {}".format(total_size))
-    for key, value in status_codes.items():
-        print("{}: {}".format(key, value))
+    for key, val in status_counts.items():
+        print("{}: {}".format(key, val))
