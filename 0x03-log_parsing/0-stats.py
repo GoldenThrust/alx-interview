@@ -27,11 +27,11 @@ try:
     total_size = 0
     status_codes_count = {}
     for i, line in enumerate(sys.stdin, start=1):
-        status_code, file_size = line.split(' ')[-2:]
+        code = line.split(' ')
         try:
-            status_code = int(status_code)
+            status_code = int(code[-2])
 
-            total_size += int(file_size)
+            total_size += int(code[-1])
 
             if status_code in status_codes_count:
                 status_codes_count[status_code] += 1
