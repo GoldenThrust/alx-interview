@@ -36,8 +36,8 @@ try:
                 status_counts[status] = 1
         except (ValueError, IndexError):
             continue
-        status_counts = dict(sorted(status_counts.items()))
         if i % 10 == 0:
+            status_counts = dict(sorted(status_counts.items()))
             print("File size: {}".format(total_size))
             for key, val in status_counts.items():
                 print("{}: {}".format(key, val))
