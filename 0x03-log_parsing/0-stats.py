@@ -48,10 +48,9 @@ def parse_log(log):
             raise Exception
 
         status_code, file_size = log.split()[-2:]
-        file_size = int(file_size)
         status_code = int(status_code)
 
-        total_size += file_size
+        total_size += int(file_size)
 
         if status_code in status_codes_count:
             status_codes_count[status_code] += 1
@@ -61,7 +60,7 @@ def parse_log(log):
         lines += 1
 
         return True
-    except Exception as e:
+    except (ValueError, IndexError):
         return False
 
 
@@ -82,6 +81,7 @@ if __name__ == '__main__':
 
             if lines % 10 == 0:
                 print_log()
-    
     except KeyboardInterrupt:
+        pass
+    finally:
         print_log()
