@@ -27,12 +27,11 @@ try:
     total_size = 0
     status_counts = {}
     for line in sys.stdin:
-        code = line.split(" ")
+        status_code, file_size = line.split(" ")[-2:]
         lines += 1
-
         try:
-            total_size += int(code[-1])
-            status = int(code[-2])
+            total_size += int(file_size)
+            status = int(status_code)
             if status in status_counts:
                 status_counts[status] += 1
             else:
