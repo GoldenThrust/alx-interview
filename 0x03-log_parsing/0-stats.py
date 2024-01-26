@@ -41,13 +41,14 @@ try:
         except (ValueError, IndexError):
             continue
 
+        status_codes_count = dict(sorted(status_codes_count.items()))
         if i % 10 == 0:
             print("File size: {}".format(total_size))
-            for code in sorted(status_codes_count.keys()):
-                print("{}: {}".format(code, status_codes_count[code]))
+            for key, value in status_codes_count.items():
+                print("{}: {}".format(key, value))
 except KeyboardInterrupt:
     pass
 finally:
     print("File size: {}".format(total_size))
-    for code in sorted(status_codes_count.keys()):
-        print("{}: {}".format(code, status_codes_count[code]))
+    for key, value in status_codes_count.items():
+        print("{}: {}".format(key, value))
