@@ -27,8 +27,8 @@ try:
     total_size = 0
     status_codes_count = {}
     for i, line in enumerate(sys.stdin, start=1):
+        status_code, file_size = line.split(' ')[-2:]
         try:
-            status_code, file_size = line.split()[-2:]
             status_code = int(status_code)
 
             total_size += int(file_size)
