@@ -2,7 +2,7 @@
 """ UTF-8 Validator """
 
 
-def validUTF8(data):
+def validUTF8(data):    
     """
     Check if a given list of integers represents a valid UTF-8 encoding.
 
@@ -32,7 +32,7 @@ def validUTF8(data):
 
     for byte in data:
         if trailing_bytes == 0:
-            # valid 1 and 0
+            # valid 0 to 127
             if byte >> 7 == 0b0:
                 continue
             # valid  192 to 223
@@ -47,10 +47,6 @@ def validUTF8(data):
             else:
                 return False
         else:
-            # if we right shift
-            # 255(11111111) it will be 3(00000011)
-            # invalid trailing byte
-
             # 128 to 191
             if byte >> 6 != 0b10:
                 return False
