@@ -50,10 +50,10 @@ def validUTF8(data):
             # if we right shift
             # 255(11111111) it will be 3(00000011)
             # invalid trailing byte
+
+            # 128 to 191
             if byte >> 6 != 0b10:
                 return False
             trailing_bytes -= 1
-        print(chr(byte), trailing_bytes)
 
-    print(chr(byte), trailing_bytes)
     return trailing_bytes == 0
