@@ -26,8 +26,10 @@ def main():
     """
     Main function to solve the N-Queens problem.
 
-    This function reads the board size N from the command-line argument, validates it,
-    and initiates the backtracking algorithm to find and print solutions to the N-Queens problem.
+    This function reads the board size N from the command-line argument,
+    validates it,
+    and initiates the backtracking algorithm to find and print solutions
+    to the N-Queens problem.
     """
 
     if len(sys.argv) != 2:
