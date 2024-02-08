@@ -35,6 +35,7 @@ if num < 4:
     print("N must be at least 4")
     sys.exit(1)
 
+
 def is_safe(pos, queen_pos):
     """
     Check if placing a queen at a given position is safe.
@@ -46,7 +47,7 @@ def is_safe(pos, queen_pos):
     Returns:
         bool: True if safe, False otherwise.
     """
-    for j in reversed(range(pos[0])):
+    for j in reversed(range(pos[0] + 1)):
         if (
             [j, pos[1]] in queen_pos
             or [j, pos[1] - (pos[0] - j)] in queen_pos
@@ -54,6 +55,7 @@ def is_safe(pos, queen_pos):
         ):
             return False
     return True
+
 
 def backtrack(row, queen_pos):
     """
@@ -72,6 +74,7 @@ def backtrack(row, queen_pos):
             queen_pos.append([row, col])
             backtrack(row + 1, queen_pos)
             queen_pos.pop()
+
 
 if __name__ == "__main__":
     for i in range(num):
