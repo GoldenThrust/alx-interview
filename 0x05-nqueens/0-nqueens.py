@@ -20,7 +20,6 @@ Example:
 
 """
 import sys
-import time
 
 if len(sys.argv) != 2:
     print("Usage: nqueens N")
@@ -35,7 +34,6 @@ except Exception:
 if num < 4:
     print("N must be at least 4")
     sys.exit(1)
-
 
 def is_safe(pos, queen_pos):
     """
@@ -57,7 +55,6 @@ def is_safe(pos, queen_pos):
             return False
     return True
 
-
 def backtrack(row, queen_pos):
     """
     Backtrack to find all solutions for placing queens on the board.
@@ -75,7 +72,6 @@ def backtrack(row, queen_pos):
             queen_pos.append([row, col])
             backtrack(row + 1, queen_pos)
             queen_pos.pop()
-
 
 if __name__ == "__main__":
     for i in range(num):
