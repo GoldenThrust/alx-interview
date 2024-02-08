@@ -1,22 +1,6 @@
 #!/usr/bin/python3
 """
 N-Queens Algorithmn
-This script solves the N-Queens problem for a given board size N.
-The N-Queens problem involves placing N
-queens on an N*N chessboard in such a way that
-no two queens threaten each other.
-
-Usage:
-    python nqueens.py N
-
-Arguments:
-    N (int): The size of the chessboard and the number of queens to be placed.
-
-Example:
->>> ./nqueens.py 4
-[[0, 1], [1, 3], [2, 0], [3, 2]]
-[[0, 2], [1, 0], [2, 3], [3, 1]]
-
 """
 
 import sys
@@ -24,10 +8,7 @@ import sys
 
 def main():
     """
-    Main function to solve the N-Queens problem.
-
-    This function reads the board size N from the command-line argument, validates it,
-    and initiates the backtracking algorithm to find and print solutions to the N-Queens problem.
+    Main function to solve the N-Queens
     """
 
     if len(sys.argv) != 2:
@@ -51,14 +32,7 @@ def main():
 
 def is_safe(pos, queen_pos):
     """
-    Check if placing a queen at a given position is safe.
-
-    Args:
-        pos (list): The position [row, col] to check.
-        queen_pos (list): List of queen positions.
-
-    Returns:
-        bool: True if safe, False otherwise.
+    Check safe placing of queen
     """
 
     for j in reversed(range(pos[0] + 1)):
@@ -73,12 +47,7 @@ def is_safe(pos, queen_pos):
 
 def backtrack(row, queen_pos, num):
     """
-    Backtrack to find all solutions for placing queens on the board.
-
-    Args:
-        row (int): The current row.
-        queen_pos (list): List of queen positions.
-        num (int): The size of the chessboard.
+    Backtrack to find all solutions
     """
 
     if row == num:
