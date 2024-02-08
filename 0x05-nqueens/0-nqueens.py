@@ -1,23 +1,6 @@
 #!/usr/bin/python3
 """
-N-Queens Solver
-
-This script solves the N-Queens problem for a given board size N.
-The N-Queens problem involves placing N
-queens on an N×N chessboard in such a way that
-no two queens threaten each other.
-
-Usage:
-    python nqueens.py N
-
-Arguments:
-    N (int): The size of the chessboard and the number of queens to be placed.
-
-Example:
-./nqueens.py 4
-[[0, 1], [1, 3], [2, 0], [3, 2]]
-[[0, 2], [1, 0], [2, 3], [3, 1]]
-
+N-Queens
 """
 import sys
 
