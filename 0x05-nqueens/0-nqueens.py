@@ -89,7 +89,7 @@ def backtrack(row, queen_pos, num):
         if is_safe([row, col], queen_pos):
             queen_pos.append([row, col])
             backtrack(row + 1, queen_pos, num)
-            queen_pos.pop()
+            # queen_pos.pop()
 
 
 if __name__ == "__main__":
