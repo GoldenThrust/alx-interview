@@ -19,25 +19,17 @@ Example:
 [[0, 2], [1, 0], [2, 3], [3, 1]]
 
 """
-
 import sys
-
-
-try:
-    num = sys.argv[1]
-except IndexError:
-    print("Usage: nqueens N")
-    sys.exit(1)
 
 if len(sys.argv) != 2:
     print("Usage: nqueens N")
     sys.exit(1)
 
 try:
-    num = int(num)
-except ValueError:
+    num = int(sys.argv[1])
+except Exception:
     print("N must be a number")
-    sys.exit(1)
+    exit(1)
 
 if num < 4:
     print("N must be at least 4")

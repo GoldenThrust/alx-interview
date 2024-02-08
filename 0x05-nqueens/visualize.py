@@ -1,5 +1,6 @@
 import sys
 from time import sleep
+
 try:
     num = sys.argv[1]
 except IndexError:
@@ -24,9 +25,14 @@ if num < 4:
 
 def is_safe(pos, queen_pos):
     for j in reversed(range(pos[0])):
-        if [j, pos[1]] in queen_pos or [j, pos[1] - (pos[0] - j)] in queen_pos or [j, pos[1] + (pos[0] - j)] in queen_pos:
+        if (
+            [j, pos[1]] in queen_pos
+            or [j, pos[1] - (pos[0] - j)] in queen_pos
+            or [j, pos[1] + (pos[0] - j)] in queen_pos
+        ):
             return False
     return True
+
 
 def backtrack(row, queen_pos, depth):
     if row == num:
@@ -45,10 +51,10 @@ def backtrack(row, queen_pos, depth):
     for col in range(num):
         if is_safe([row, col], queen_pos):
             queen_pos.append([row, col])
-            backtrack(row + 1, queen_pos, depth+1)
+            backtrack(row + 1, queen_pos, depth + 1)
             queen_pos.pop()
+
 
 for i in range(num):
     queen_pos = [[0, i]]
     backtrack(1, queen_pos, 0)
-

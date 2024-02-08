@@ -24,9 +24,14 @@ if num < 4:
 
 def is_safe(pos, queen_pos):
     for j in reversed(range(pos[0])):
-        if [j, pos[1]] in queen_pos or [j, pos[1] - (pos[0] - j)] in queen_pos or [j, pos[1] + (pos[0] - j)] in queen_pos:
+        if (
+            [j, pos[1]] in queen_pos
+            or [j, pos[1] - (pos[0] - j)] in queen_pos
+            or [j, pos[1] + (pos[0] - j)] in queen_pos
+        ):
             return False
     return True
+
 
 def recurse(row, queen_pos, depth):
     print(row, queen_pos, depth)
@@ -37,8 +42,9 @@ def recurse(row, queen_pos, depth):
     for col in range(num):
         if is_safe([row, col], queen_pos):
             queen_pos.append([row, col])
-            recurse(row + 1, queen_pos, depth+1)
+            recurse(row + 1, queen_pos, depth + 1)
             queen_pos.pop()
+
 
 for i in range(num):
     queen_pos = [[0, i]]
