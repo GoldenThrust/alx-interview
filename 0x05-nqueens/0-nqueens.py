@@ -75,6 +75,7 @@ def backtrack(row, queen_pos):
             backtrack(row + 1, queen_pos)
             queen_pos.pop()
 
+
 if __name__ == "__main__":
     for i in range(num):
         queen_pos = [[0, i]]
