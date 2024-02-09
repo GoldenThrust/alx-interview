@@ -65,9 +65,9 @@ def is_safe(pos, queen_pos):
 
     for j in reversed(range(pos[0] + 1)):
         if (
-            [j, pos[1]] in queen_pos
-            or [j, pos[1] - (pos[0] - j)] in queen_pos
-            or [j, pos[1] + (pos[0] - j)] in queen_pos
+            [j, pos[1]] in queen_pos or
+            [j, pos[1] - (pos[0] - j)] in queen_pos or
+            [j, pos[1] + (pos[0] - j)] in queen_pos
         ):
             return False
     return True
