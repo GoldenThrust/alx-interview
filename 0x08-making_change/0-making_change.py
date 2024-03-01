@@ -27,10 +27,6 @@ def makeChange(coins, total):
     for coin in coins:
         for amount in range(coin, total + 1):
             arr_changes[amount] = min(arr_changes[amount],
-                                       arr_changes[amount - coin] + 1)
+                                      arr_changes[amount - coin] + 1)
 
-    # return arr_changes[total] if arr_changes[total] != float('inf') else -1
-    if arr_changes[total] != float('inf'):
-        return arr_changes[total]
-    else:
-        return -1
+    return arr_changes[total] if arr_changes[total] != float('inf') else -1
