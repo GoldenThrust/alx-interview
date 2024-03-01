@@ -21,12 +21,16 @@ def makeChange(coins, total):
     if total <= 0:
         return 0
 
-    best_answers = [float('inf')] * (total + 1)
-    best_answers[0] = 0
+    arr_changes = [float('inf')] * (total + 1)
+    arr_changes[0] = 0
 
     for coin in coins:
         for amount in range(coin, total + 1):
-            best_answers[amount] = min(best_answers[amount],
-                                       best_answers[amount - coin] + 1)
+            arr_changes[amount] = min(arr_changes[amount],
+                                       arr_changes[amount - coin] + 1)
 
-    return best_answers[total] if best_answers[total] != float('inf') else -1
+    # return arr_changes[total] if arr_changes[total] != float('inf') else -1
+    if arr_changes[total] != float('inf'):
+        return arr_changes[total]
+    else:
+        return -1
