@@ -38,7 +38,6 @@ def determine_winner(nums):
     """
 
 
-
 def isWinner(x, nums):
     """
     Simulate a game between Maria and Ben and determine the winner based on the
@@ -52,7 +51,7 @@ def isWinner(x, nums):
         str or None: The winner of the game ("Maria" or "Ben"). Returns None if
         there's a tie.
     """
-    
+
     if x < 1 or not nums:
         return None
 
@@ -63,7 +62,7 @@ def isWinner(x, nums):
     for num in nums:
         if counter == x:
             break
-        
+
         primes = sieve_of_eratosthenes(num)
 
         maria_wins = False
