@@ -4,10 +4,12 @@
 
 def sieve_of_eratosthenes(limit):
     """
-    Generate a list of prime numbers up to a specified limit using the Sieve of Eratosthenes algorithm.
+    Generate a list of prime numbers up to a specified limit using the Sieve of
+    Eratosthenes algorithm.
 
     Args:
-        limit (int): The upper limit (inclusive) within which to find prime numbers.
+        limit (int): The upper limit (inclusive) within which to find prime
+        numbers.
 
     Returns:
         list: A list of prime numbers within the specified limit.
@@ -46,14 +48,16 @@ def determine_winner(nums):
 
 def isWinner(x, nums):
     """
-    Simulate a game between Maria and Ben and determine the winner based on the results.
+    Simulate a game between Maria and Ben and determine the winner based on the
+    results.
 
     Args:
         x (int): The number of rounds to simulate.
         nums (list): A list of integers representing the rounds of the game.
 
     Returns:
-        str or None: The winner of the game ("Maria" or "Ben"). Returns None if there's a tie.
+        str or None: The winner of the game ("Maria" or "Ben"). Returns None if
+        there's a tie.
     """
     counter = 0
     maria = 0
