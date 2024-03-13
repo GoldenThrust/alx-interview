@@ -65,7 +65,7 @@ def isWinner(x, nums):
         str or None: The winner of the game ("Maria" or "Ben"). Returns
         None if there's a tie.
     """
-    if x < 1 or not nums or any(num < 0 for num in nums):
+    if x < 1 or not nums:
         return None
 
     counter = 0
