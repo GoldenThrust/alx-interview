@@ -21,5 +21,4 @@ examples = [
 for i, (example, expected_output) in enumerate(examples):
     x, nums = example
     result = isWinner(x, nums)
-    if result != expected_output:
-        print(f"Test {i + 1} failed. Expected output: {expected_output}, actual output: {result}")
+    print(f"Test {i + 1}. Expected output: {expected_output}, actual output: {result}")

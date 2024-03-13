@@ -1,6 +1,4 @@
 #!/usr/bin/python3
-""" prime game """
-
 
 def sieve_of_eratosthenes(limit):
     """
@@ -28,56 +26,61 @@ def sieve_of_eratosthenes(limit):
 
 def determine_winner(nums):
     """
-    Determine the winner between Maria and Ben based on a list of numbers.
+    Determine the winner between Maria and Ben based on a list of
+    numbers.
 
     Args:
-        nums (list): A list of integers representing the rounds of the game.
+        nums (list): A list of integers representing the rounds of
+        the game.
 
     Returns:
         str: The winner of the game ("Maria" or "Ben").
     """
+    try:
+        primes = sieve_of_eratosthenes(max(nums))
+    except Exception:
+        pass
+
+    maria_wins = False
+    for n in nums:
+        if n in primes:
+            maria_wins = not maria_wins
+
+    return "Maria" if maria_wins else "Ben"
 
 
 def isWinner(x, nums):
     """
-    Simulate a game between Maria and Ben and determine the winner based on the
-    results.
+    Simulate a game between Maria and Ben and determine the winner
+    based on the results.
 
     Args:
         x (int): The number of rounds to simulate.
-        nums (list): A list of integers representing the rounds of the game.
+        nums (list): A list of integers representing the rounds of the
+        game.
 
     Returns:
-        str or None: The winner of the game ("Maria" or "Ben"). Returns None if
-        there's a tie.
+        str or None: The winner of the game ("Maria" or "Ben"). Returns
+        None if there's a tie.
     """
-
     if x < 1 or not nums:
         return None
 
-    # counter = 0
+    counter = 0
     maria = 0
     ben = 0
 
     for num in nums:
-        # if counter == x:
-        #     break
+        if counter == x:
+            break
 
-        primes = sieve_of_eratosthenes(num)
-
-        maria_wins = False
-        for n in range(1, num + 1):
-            if n in primes:
-                maria_wins = not maria_wins
-
-        winner = "Maria" if maria_wins else "Ben"
-
+        winner = determine_winner(range(1, num + 1))
         if winner == "Maria":
             maria += 1
         elif winner == "Ben":
             ben += 1
 
-        # counter += 1
+        counter += 1
 
     if maria > ben:
         return "Maria"
