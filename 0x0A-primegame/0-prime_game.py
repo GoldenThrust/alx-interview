@@ -55,13 +55,13 @@ def isWinner(x, nums):
     if x < 1 or not nums:
         return None
 
-    counter = 0
+    # counter = 0
     maria = 0
     ben = 0
 
     for num in nums:
-        if counter == x:
-            break
+        # if counter == x:
+        #     break
 
         primes = sieve_of_eratosthenes(num)
 
@@ -77,7 +77,7 @@ def isWinner(x, nums):
         elif winner == "Ben":
             ben += 1
 
-        counter += 1
+        # counter += 1
 
     if maria > ben:
         return "Maria"
